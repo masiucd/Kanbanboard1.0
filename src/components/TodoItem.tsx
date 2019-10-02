@@ -5,10 +5,16 @@ import './todoItem.css';
 interface TodoItemProps {
   todos: Todo;
   toggleTodo: ToggleTodo;
+  deleteTodo: DeleteTodo;
 }
 
-const TodoItem: React.FC<TodoItemProps> = ({ todos, toggleTodo }) => {
+const TodoItem: React.FC<TodoItemProps> = ({
+  todos,
+  toggleTodo,
+  deleteTodo
+}) => {
   const { completed, text } = todos;
+
   return (
     <div>
       <li className={completed ? 'completed' : ''}>
@@ -20,6 +26,7 @@ const TodoItem: React.FC<TodoItemProps> = ({ todos, toggleTodo }) => {
           />
           {text}
         </label>
+        <button onClick={() => deleteTodo(text)}>Delete</button>
       </li>
     </div>
   );

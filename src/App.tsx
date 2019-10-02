@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 import './App.css';
 import TodoList from './components/TodoList';
-
+import AddTodoForm from './components/AddtodoForm';
 const initialTodos: Array<Todo> = [
   { text: 'walk the dog', completed: false },
   { text: 'walk the cat', completed: false },
@@ -26,9 +26,20 @@ const App: React.FC = () => {
     setTodos(newTodos);
   };
 
+  const addTodo: AddTodo = newTodo => {
+    newTodo.trim() !== '' &&
+      setTodos([...todos, { text: newTodo, completed: false }]);
+  };
+
+  const deleteTodo: DeleteTodo = text => {
+    const updatedTodos = todos.filter(todo => todo.text !== text);
+    setTodos(updatedTodos);
+  };
+
   return (
     <div className="App">
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+      <AddTodoForm addTodo={addTodo} />
     </div>
   );
 };
