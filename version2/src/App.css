@@ -1,0 +1,51 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+body {
+  font-family: sans-serif;
+  box-sizing: border-box;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  max-width: 77%;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  height: 75vh;
+}
+
+ul,
+li {
+  list-style: none;
+  ;
+}
+
+.completed {
+  text-decoration: line-through #053080;
+  text-transform: capitalize;
+  font-style: oblique;
+  font-weight: 800;
+}
+
+li {
+  margin: 1rem;
+}
+
+li input {
+  margin-right: 1.5rem;
+}
+
+li span {
+  cursor: pointer;
+  margin: 0 1rem;
+}
+
+input[type="checkbox"] {
+  margin: 0 .5rem;
+}
