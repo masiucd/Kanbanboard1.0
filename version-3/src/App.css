@@ -1,0 +1,99 @@
+.App {
+  text-align: center;
+}
+
+h1 {
+  background: steelblue;
+  width: 50%;
+  margin: 3rem auto;
+  padding: .3rem .5rem;
+  display: block;
+  background-image: linear-gradient(to right, #25b0a9 50%, #0370fe 50%);
+  background-position: 0;
+  background-size: 200%;
+  transition: all 0.4s;
+  transform: rotate(2deg);
+  box-shadow: 1px 2px 1px #1a1816;
+}
+
+h1:hover {
+  background-position: -100%;
+  color: #fff;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+.completed-event {
+  text-decoration: line-through #1a1816;
+  font-weight: 900;
+  font-style: oblique;
+}
+
+.list {
+  padding: 2rem;
+  max-width: 60%;
+  margin: 1rem auto;
+  font-size: 2rem;
+}
+
+ul {}
+
+li {
+  font-size: 1.7rem;
+  padding: .5rem .1rem;
+  width: 100%;
+
+  box-shadow: 2px 3px 2px #ccc;
+  margin: 0 auto;
+  border: 2px solid #1a1816;
+  display: flex;
+  align-items: center;
+
+}
+
+li input[type="checkbox"] {
+  margin-left: 1rem;
+}
+
+li span {
+  cursor: pointer;
+  margin-left: auto;
+}
+
+li span:nth-child(1n) {}
+
+li span:last-child {
+  margin: 0 1rem;
+
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin: 2rem auto 1rem auto;
+  justify-content: center;
+  align-items: center;
+}
+
+form input {
+  padding: .5rem 1.2rem;
+  border-radius: 2rem;
+  width: 100%;
+  border: 2px solid #1a1816;
+  font-size: 1.2rem;
+}
+
+form button {
+  width: 50%;
+  margin: .4rem 0;
+  font-size: 1.2rem;
+  background: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  border: 2px solid #1a1816;
+  margin-right: auto;
+}
