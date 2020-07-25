@@ -22,9 +22,9 @@ const Task: React.FC<Props> = ({ task, index }) => {
     <Draggable draggableId={task.id} index={index}>
       {(provided, snapshot) => (
         <TaskStyles
-          ref={provided.innerRef}
           {...provided.draggableProps}
-          {...provided.dragHandleProps}>
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}>
           {task.content}
         </TaskStyles>
       )}

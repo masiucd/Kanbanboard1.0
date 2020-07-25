@@ -18,3 +18,17 @@ type InitialData = {
   columns: Record<ColumnId, Column>;
   columnOrder: ColumnId[];
 };
+
+interface Result {
+  draggableId: string;
+  type: string;
+  reason: string;
+  source: {
+    droppableId: string;
+    index: number;
+  };
+  destination: {
+    droppableId: string;
+    index: number;
+  };
+}
