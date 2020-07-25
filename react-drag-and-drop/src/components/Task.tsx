@@ -1,8 +1,10 @@
 import * as React from "react";
+import { Draggable } from "react-beautiful-dnd";
 import styled from "styled-components";
 
 interface Props {
   task: Task;
+  index: number;
 }
 
 const TaskStyles = styled.li`
@@ -12,9 +14,21 @@ const TaskStyles = styled.li`
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   box-shadow: 1px 2px 3px ${({ theme }) => theme.colors.secondary};
   margin: 1rem 0;
+  background: ${(props) => props.theme.colors.background};
 `;
 
-const Task: React.FC<Props> = ({ task }) => {
-  return <TaskStyles>{task.content}</TaskStyles>;
+const Task: React.FC<Props> = ({ task, index }) => {
+  return (
+    <Draggable draggableId={task.id} index={index}>
+      {(provided, snapshot) => (
+        <TaskStyles
+          ref={provided.innerRef}
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}>
+          {task.content}
+        </TaskStyles>
+      )}
+    </Draggable>
+  );
 };
 export default Task;

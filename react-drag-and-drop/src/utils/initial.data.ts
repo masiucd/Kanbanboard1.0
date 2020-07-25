@@ -1,38 +1,10 @@
-// interface Task {
-//   id: string;
-//   content: string;
-// }
-
-// type TasksType = {
-//   "task-1": Task;
-//   "task-2": Task;
-//   "task-3": Task;
-//   "task-4": Task;
-// };
-
-// interface Col {
-//   id: string;
-//   title: string;
-//   taskIds: string[];
-// }
-
-// type ColumnsType = {
-//   "column-1": Col;
-// };
-
 // interface Data {
-//   tasks: TasksType;
-//   columns: ColumnsType;
+//   tasks: { [key: string]: any };
+//   columns: { [key: string]: any };
 //   columnOrder: string[];
 // }
 
-interface Data {
-  tasks: { [key: string]: any };
-  columns: { [key: string]: any };
-  columnOrder: string[];
-}
-
-const initialData: Data = {
+const initialData: InitialData = {
   tasks: {
     "task-1": { id: "task-1", content: "Take out the garbage" },
     "task-2": { id: "task-2", content: "Watch my favorite show" },

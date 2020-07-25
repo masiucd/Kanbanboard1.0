@@ -1,27 +1,20 @@
-interface Task {
-  id: string;
+type TaskId = string;
+
+type Task = {
+  id: TaskId;
   content: string;
-}
+};
 
-interface Column {
-  id: string;
+type ColumnId = string;
+
+type Column = {
+  id: ColumnId;
   title: string;
-  taskIds: string[];
-}
+  taskIds: TaskId[];
+};
 
-interface InitialData {
-  [task: string]: Task;
-}
-
-interface InitialData2 {
-  tasks: {
-    "task-1": Task;
-    "task-2": Task;
-    "task-3": Task;
-    "task-4": Task;
-  };
-  columns: {
-    "column-1": Column;
-  };
-  columnOrder: string[];
-}
+type InitialData = {
+  tasks: Record<TaskId, Task>;
+  columns: Record<ColumnId, Column>;
+  columnOrder: ColumnId[];
+};

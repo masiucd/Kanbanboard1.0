@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Droppable } from "react-beautiful-dnd";
 import styled from "styled-components";
 import Task from "./Task";
 
@@ -12,6 +13,7 @@ const Wrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.colors.secondary};
   box-shadow: 1px 2px 3px ${({ theme }) => theme.colors.secondary};
   margin: 1.5rem;
+  min-height: 60vh;
 `;
 
 const Title = styled.h3`
@@ -21,17 +23,22 @@ const Title = styled.h3`
 
 const TaskList = styled.ul`
   padding: 1rem;
+  min-height: 45vh;
 `;
 
 const Column: React.FC<Props> = ({ column, tasks }) => {
   return (
     <Wrapper>
       <Title> {column.title} </Title>
-      <TaskList>
-        {tasks.map((task) => (
-          <Task key={task.id} task={task} />
-        ))}
-      </TaskList>
+      <Droppable droppableId={column.id} type='LIST'>
+        {(provided, snapshot) => (
+          <TaskList ref={provided.innerRef} {...provided.droppableProps}>
+            {tasks.map((task, index) => (
+              <Task key={task.id} task={task} index={index} />
+            ))}
+          </TaskList>
+        )}
+      </Droppable>
     </Wrapper>
   );
 };
