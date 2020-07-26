@@ -1,0 +1,39 @@
+// interface Data {
+//   tasks: { [key: string]: any };
+//   columns: { [key: string]: any };
+//   columnOrder: string[];
+// }
+
+const initialData: InitialData = {
+  tasks: {
+    "task-1": { id: "task-1", content: "Take out the garbage" },
+    "task-2": { id: "task-2", content: "Watch my favorite show" },
+    "task-3": { id: "task-3", content: "Charge my phone" },
+    "task-4": { id: "task-4", content: "Cook dinner" },
+  },
+  columns: {
+    "column-1": {
+      id: "column-1",
+      title: "To do",
+      taskIds: ["task-1", "task-2", "task-3", "task-4"],
+    },
+  },
+
+  columnOrder: ["column-1"],
+};
+
+const result: Result = {
+  draggableId: "task-1",
+  type: "TYPE",
+  reason: "DROP",
+  source: {
+    droppableId: "column-1",
+    index: 0,
+  },
+  destination: {
+    droppableId: "column-1",
+    index: 1,
+  },
+};
+
+export { initialData, result };
