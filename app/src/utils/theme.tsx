@@ -16,7 +16,7 @@ export const mainTheme: DefaultTheme = {
     h5: "22px",
     p: "18px",
     a: "16px",
-    maxWidth: "900px",
+    maxWidth: "1200px",
   },
   shadow: {
     elevations: [
@@ -49,7 +49,7 @@ export const secondaryTheme: DefaultTheme = {
     h5: "22px",
     p: "18px",
     a: "16px",
-    maxWidth: "900px",
+    maxWidth: "1200px",
   },
   shadow: {
     elevations: [

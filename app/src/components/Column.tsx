@@ -14,6 +14,9 @@ const Wrapper = styled.div`
   box-shadow: 1px 2px 3px ${({ theme }) => theme.colors.secondary};
   margin: 1.5rem;
   min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  min-width: 30rem;
 `;
 
 const Title = styled.h3`
@@ -30,6 +33,7 @@ const TaskList = styled.ul<TaskListProps>`
   background-color: ${({ theme, isDraggingOver }) =>
     isDraggingOver ? theme.colors.secondary : theme.colors.background};
   transition: ${({ theme }) => theme.transition.quickTransition};
+  flex: 1;
 `;
 
 const Column: React.FC<Props> = ({ column, tasks }) => {

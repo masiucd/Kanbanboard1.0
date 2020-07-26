@@ -17,23 +17,19 @@ const initialData: InitialData = {
       title: "To do",
       taskIds: ["task-1", "task-2", "task-3", "task-4"],
     },
+    "column-2": {
+      id: "column-2",
+      title: "In progress",
+      taskIds: [],
+    },
+    "column-3": {
+      id: "column-3",
+      title: "Done",
+      taskIds: [],
+    },
   },
 
-  columnOrder: ["column-1"],
+  columnOrder: ["column-1", "column-2", "column-3"],
 };
 
-const result: Result = {
-  draggableId: "task-1",
-  type: "TYPE",
-  reason: "DROP",
-  source: {
-    droppableId: "column-1",
-    index: 0,
-  },
-  destination: {
-    droppableId: "column-1",
-    index: 1,
-  },
-};
-
-export { initialData, result };
+export { initialData };
