@@ -2,14 +2,15 @@ import React from "react";
 import "./App.css";
 import Column from "./components/Column";
 import Layout from "./components/layout";
-import Horizontal from "./components/Horizontal";
 import { AppWrapper, Grid } from "./components/styled/Wrappers";
-import { initialData, initialData2 } from "./utils/initial.data";
+import { initialData } from "./utils/initial.data";
 import { DragDropContext, DragUpdate, DropResult } from "react-beautiful-dnd";
+import Modal from "./components/modal";
 
 function App() {
   const [state, setState] = React.useState(initialData);
-  const [horizontalState, setHorizontalState] = React.useState(initialData2);
+  const [on, setOn] = React.useState<boolean>(false);
+
   const { columns, tasks, columnOrder } = state;
 
   const handleDragEnd = (result: DropResult) => {
@@ -114,20 +115,8 @@ function App() {
             </Grid>
           </>
         </DragDropContext>
-        {/* <DragDropContext onDragEnd={handleDragEnd}>
-          <Grid>
-            {horizontalState.columnOrder.map((colId) => {
-              const column = horizontalState.columns[colId];
-              const tasks = column.taskIds.map(
-                (taskID) => horizontalState.tasks[taskID],
-              );
-
-              return (
-                <Horizontal key={column.id} column={column} tasks={tasks} />
-              );
-            })}
-          </Grid>
-        </DragDropContext> */}
+        <Modal on={on} setOn={setOn} />
+        <button onClick={() => setOn(!on)}>add Task</button>
       </AppWrapper>
     </Layout>
   );
