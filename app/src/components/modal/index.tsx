@@ -30,7 +30,7 @@ const StyledModalBody = styled(animated.div)`
   #close {
     position: absolute;
     top: 0;
-    right: 1rem;
+    right: 2rem;
     font-size: 5rem;
     cursor: pointer;
   }
