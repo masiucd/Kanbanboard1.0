@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Droppable } from "react-beautiful-dnd";
-import { Wrapper, Title, TaskList } from "./styled/elements";
+import { TaskList, Wrapper } from "./styled/elements";
 import Task from "./Task";
 
 interface Props {
@@ -8,18 +8,14 @@ interface Props {
   tasks: Task[];
 }
 
-const Column: React.FC<Props> = ({ column, tasks }) => {
+const Horizontal: React.FC<Props> = ({ column, tasks }) => {
   return (
-    <Wrapper>
-      <Title> {column.title} </Title>
-      <Droppable
-        droppableId={column.id}
-        // Will only be able to drop into the 2 first columns
-        // type={column.id === "column-3" ? "done" : "active"}
-      >
+    <Wrapper width='70%'>
+      <Droppable droppableId={column.id} direction='horizontal'>
         {(provided, snapshot) => (
           <TaskList
             ref={provided.innerRef}
+            isFlex
             {...provided.droppableProps}
             isDraggingOver={snapshot.isDraggingOver}>
             {tasks.map((task, index) => (
@@ -32,4 +28,4 @@ const Column: React.FC<Props> = ({ column, tasks }) => {
     </Wrapper>
   );
 };
-export default Column;
+export default Horizontal;

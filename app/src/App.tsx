@@ -2,12 +2,14 @@ import React from "react";
 import "./App.css";
 import Column from "./components/Column";
 import Layout from "./components/layout";
+import Horizontal from "./components/Horizontal";
 import { AppWrapper, Grid } from "./components/styled/Wrappers";
-import { initialData } from "./utils/initial.data";
+import { initialData, initialData2 } from "./utils/initial.data";
 import { DragDropContext, DragUpdate, DropResult } from "react-beautiful-dnd";
 
 function App() {
   const [state, setState] = React.useState(initialData);
+  const [horizontalState, setHorizontalState] = React.useState(initialData2);
   const { columns, tasks, columnOrder } = state;
 
   const handleDragEnd = (result: DropResult) => {
@@ -98,18 +100,34 @@ function App() {
     <Layout>
       <AppWrapper>
         <DragDropContext onDragEnd={handleDragEnd}>
+          <>
+            <Grid>
+              {columnOrder.map((columnId) => {
+                const column = columns[columnId];
+                const tasksData = column.taskIds.map(
+                  (taskId: string) => tasks[taskId],
+                );
+                return (
+                  <Column key={column.id} column={column} tasks={tasksData} />
+                );
+              })}
+            </Grid>
+          </>
+        </DragDropContext>
+        {/* <DragDropContext onDragEnd={handleDragEnd}>
           <Grid>
-            {columnOrder.map((columnId) => {
-              const column = columns[columnId];
-              const tasksData = column.taskIds.map(
-                (taskId: string) => tasks[taskId],
+            {horizontalState.columnOrder.map((colId) => {
+              const column = horizontalState.columns[colId];
+              const tasks = column.taskIds.map(
+                (taskID) => horizontalState.tasks[taskID],
               );
+
               return (
-                <Column key={column.id} column={column} tasks={tasksData} />
+                <Horizontal key={column.id} column={column} tasks={tasks} />
               );
             })}
           </Grid>
-        </DragDropContext>
+        </DragDropContext> */}
       </AppWrapper>
     </Layout>
   );
