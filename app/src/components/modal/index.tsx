@@ -1,10 +1,14 @@
 import * as React from "react";
 import { useSpring, animated } from "react-spring";
 import styled from "styled-components";
+import Form from "../form";
 
 interface Props {
+  state: InitialData;
   on: boolean;
   setOn: React.Dispatch<React.SetStateAction<boolean>>;
+  isAddingTask?: boolean;
+  setState: React.Dispatch<React.SetStateAction<InitialData>>;
 }
 
 const StyledModal = styled(animated.div)`
@@ -36,7 +40,7 @@ const StyledModalBody = styled(animated.div)`
   }
 `;
 
-const Modal: React.FC<Props> = ({ on, setOn }) => {
+const Modal: React.FC<Props> = ({ on, setOn, state, setState }) => {
   const { x } = useSpring({
     x: on ? 0 : 100,
   });
@@ -47,7 +51,8 @@ const Modal: React.FC<Props> = ({ on, setOn }) => {
         transform: x.interpolate((x) => `translate3d(0,${x * 1}%,0)`),
       }}>
       <StyledModalBody>
-        <h1>Modal body</h1>
+        <h1>Add new task</h1>
+        <Form setState={setState} className='Form-add' state={state} />
         <div id='close' onClick={() => setOn(!on)}>
           ⤫
         </div>

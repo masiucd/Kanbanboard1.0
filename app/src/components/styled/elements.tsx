@@ -35,3 +35,23 @@ export const TaskList = styled.ul<TaskListProps>`
   display: ${({ isFlex }) => (isFlex ? `flex` : "block")};
   align-items: ${({ isFlex }) => isFlex && `center`};
 `;
+
+export const Btn = styled.button`
+  padding: 0.6rem 1rem;
+  font-size: 1.8rem;
+  margin: 3rem auto;
+  display: block;
+  width: 24rem;
+  text-transform: capitalize;
+  border: 2px solid ${(props) => props.theme.colors.text};
+  background: ${(props) => props.theme.colors.button};
+  color: ${(props) => props.theme.colors.background};
+  font-weight: 700;
+  cursor: pointer;
+  ${({ theme }) => theme.shadow.elevations[1]};
+  transition: ${({ theme }) => theme.transition.quickTransition};
+  &:hover {
+    ${({ theme }) => theme.shadow.elevations[2]};
+    width: 25rem;
+  }
+`;

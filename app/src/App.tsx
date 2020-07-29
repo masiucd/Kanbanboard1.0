@@ -6,6 +6,7 @@ import { AppWrapper, Grid } from "./components/styled/Wrappers";
 import { initialData } from "./utils/initial.data";
 import { DragDropContext, DragUpdate, DropResult } from "react-beautiful-dnd";
 import Modal from "./components/modal";
+import { Btn } from "./components/styled/elements";
 
 function App() {
   const [state, setState] = React.useState(initialData);
@@ -83,23 +84,10 @@ function App() {
     setState(newState);
   };
 
-  const handleDragUpdate = (update: DragUpdate) => {
-    const { destination } = update;
-    const opacity = destination
-      ? destination.index / Object.keys(state.tasks).length
-      : 0;
-
-    document.body.style.background = `rgba(0,0,0,${opacity})`;
-  };
-
-  const onDragStart = () => {
-    document.body.style.color = "orange";
-    document.body.style.transition = "background-color 0.2s ease";
-  };
-
   return (
     <Layout>
       <AppWrapper>
+        <Btn onClick={() => setOn(!on)}>add Task</Btn>
         <DragDropContext onDragEnd={handleDragEnd}>
           <>
             <Grid>
@@ -115,8 +103,7 @@ function App() {
             </Grid>
           </>
         </DragDropContext>
-        <Modal on={on} setOn={setOn} />
-        <button onClick={() => setOn(!on)}>add Task</button>
+        <Modal state={state} setState={setState} on={on} setOn={setOn} />
       </AppWrapper>
     </Layout>
   );
