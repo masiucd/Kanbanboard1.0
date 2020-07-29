@@ -6,7 +6,8 @@ interface WrapperProps {
 
 export const Wrapper = styled.div<WrapperProps>`
   padding: 2rem 1rem;
-  border: 1px solid ${({ theme }) => theme.colors.secondary};
+  border: 2px solid ${({ theme }) => theme.colors.secondary};
+  border-radius: 0.5rem;
   box-shadow: 1px 2px 3px ${({ theme }) => theme.colors.secondary};
   margin: 1.5rem;
   min-height: 60vh;

@@ -16,15 +16,22 @@ const Form: React.FC<Props> = ({ className, state, setState }) => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
-    let newTaskIdList = [...state.columns["column-1"].taskIds, "task-6"];
+    let idCount = Object.keys(state.tasks).length + 1;
 
-    console.log(uuid.v4());
+    let taskId = `task-${idCount}`;
+    let taskIdKey = `"task-${idCount}"`;
+    console.log(taskId);
+    console.log(taskIdKey);
+    console.log(typeof taskId);
+
+    let newTaskIdList = [...state.columns["column-1"].taskIds, taskId];
+
     if (content.length > 0) {
       setState((prevState) => ({
         ...prevState,
         tasks: {
           ...prevState.tasks,
-          "task-6": { id: "task-6", content },
+          "task-6": { id: taskId, content },
         },
         columns: {
           ...prevState.columns,
@@ -34,6 +41,7 @@ const Form: React.FC<Props> = ({ className, state, setState }) => {
           },
         },
       }));
+
       setContent("");
     } else {
       return;
