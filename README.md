@@ -4,7 +4,7 @@
 
 * React ⚛️
 * Typescript 𝓣𝓼
-* React DND 🐲 (Drag and drop library)
+* React beautiful DND 🐲 (Drag and drop library)
 * styled-components 💅🏻
 
 ### Usage
